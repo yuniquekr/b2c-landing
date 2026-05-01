@@ -9,8 +9,9 @@
 <meta property="og:description" content="WISET 공식 위탁 · 50명 한정 · 8주 120시간 전액 무료" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.css" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230c0e13'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Pretendard,sans-serif' font-weight='800' font-size='52' fill='%23ffffff'%3EW%3C/text%3E%3C/svg%3E" />
 <style>
 /* ============================================================
@@ -46,9 +47,15 @@
   --hairline-dark: rgba(255, 255, 255, 0.08);
   --hairline-light: rgba(255, 255, 255, 0.16);
 
-  /* Typography */
+  /* Typography — 역할별 4종 분리 */
+  /* Display (헤드라인): Wanted Sans 한글 + Sora 영문/숫자 — 임팩트 강한 모던 톤 */
+  --font-display: 'Wanted Sans Variable', 'Wanted Sans', 'Sora', 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Body & UI: Pretendard (한글 가독성 최강) + Inter (영문) */
   --font: 'Pretendard Variable', Pretendard, 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-num: 'Inter', 'Pretendard Variable', system-ui, sans-serif;
+  /* Numeric (통계/카운터): Sora — 둥글고 광택 있는 숫자 톤 */
+  --font-num: 'Sora', 'Inter', 'Pretendard Variable', system-ui, sans-serif;
+  /* Mono (메타 라벨/캡션): JetBrains Mono — 라벨/캡션 전용 */
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --max-w: 1200px;
   --max-w-narrow: 980px;
@@ -102,38 +109,43 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 /* ============================================================
    TYPE
 ============================================================ */
+/* 모든 헤드라인 = Wanted Sans Variable (한글 임팩트) + Sora (영문 광택) */
+.t-display, .t-h1, .t-h2, .t-h3 {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "ss03", "case", "tnum";
+}
 .t-display {
-  font-weight: 700;
-  font-size: clamp(32px, 5.6vw, 56px);
-  line-height: 1.18;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  font-size: clamp(34px, 6vw, 60px);
+  line-height: 1.14;
+  letter-spacing: -0.035em;
   color: var(--white);
   margin: 0;
   word-break: keep-all;
 }
 .t-h1 {
-  font-weight: 700;
-  font-size: clamp(28px, 3.8vw, 40px);
-  line-height: 1.25;
-  letter-spacing: -0.025em;
+  font-weight: 800;
+  font-size: clamp(28px, 3.8vw, 42px);
+  line-height: 1.22;
+  letter-spacing: -0.03em;
   color: var(--white);
   margin: 0;
   word-break: keep-all;
 }
 .t-h2 {
   font-weight: 700;
-  font-size: clamp(22px, 2.6vw, 28px);
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.28;
+  letter-spacing: -0.025em;
   color: var(--white);
   margin: 0;
   word-break: keep-all;
 }
 .t-h3 {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 18px;
   line-height: 1.4;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.018em;
   color: var(--white);
   margin: 0;
   word-break: keep-all;
@@ -323,10 +335,12 @@ section { padding: 64px 0; }
 .hero h1 {
   margin: 0;
   max-width: 100%;
-  font-weight: 700;
-  font-size: clamp(32px, 5vw, 56px);
-  line-height: 1.18;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "ss03", "case";
+  font-weight: 800;
+  font-size: clamp(34px, 5.4vw, 60px);
+  line-height: 1.16;
+  letter-spacing: -0.035em;
   color: var(--white);
   text-align: left;
 }
@@ -417,11 +431,11 @@ section { padding: 64px 0; }
   display: flex;
   gap: 18px;
   width: max-content;
-  /* 두 세트 X 6 = 12개 카드, 38s 한 사이클 */
-  animation: marquee-scroll 38s linear infinite;
+  /* 두 세트 X 6 = 12개 카드, 33s 한 사이클 (이전 38s에서 15% 빠르게) */
+  animation: marquee-scroll 33s linear infinite;
   will-change: transform;
 }
-.marquee:hover .marquee-track { animation-play-state: paused; }
+/* 호버해도 멈추지 않고 계속 흐르게 — 사용자 요청 */
 @keyframes marquee-scroll {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }
@@ -442,12 +456,48 @@ section { padding: 64px 0; }
   transform: translateY(-4px);
 }
 .mq-photo {
+  position: relative;
   aspect-ratio: 4 / 5;
   background-color: var(--bg-card-2);
   background-size: cover;
   background-position: center top;
-  filter: brightness(0.96) contrast(1.04);
+  /* 살짝 채도 빼고 따뜻한 톤 + 미세 contrast → 카메라 RAW 후보정 느낌 */
+  filter:
+    brightness(0.94)
+    contrast(1.08)
+    saturate(0.85)
+    sepia(0.06);
+  overflow: hidden;
 }
+/* 카메라 grain (SVG 기반 fractal noise — 외부 자산 불필요) */
+.mq-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  background-repeat: repeat;
+  z-index: 1;
+}
+/* 비넷 + 약간의 따뜻한 컬러 캐스트 */
+.mq-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.18) 100%),
+    linear-gradient(180deg, rgba(255,210,170,0.04) 0%, transparent 30%, rgba(40,30,50,0.06) 100%);
+}
+/* 호버 시 grain 살짝 약하게 + 색감 풍부하게 (자세히 보고 싶을 때) */
+.mq-card:hover .mq-photo {
+  filter: brightness(0.98) contrast(1.06) saturate(0.95) sepia(0.03);
+}
+.mq-card:hover .mq-photo::before { opacity: 0.10; }
 .mq-text {
   padding: 14px 16px 16px;
   display: flex; flex-direction: column; gap: 4px;
@@ -987,6 +1037,97 @@ section { padding: 64px 0; }
 .schedule-table .v .sub { font-size: 12px; color: var(--gray-500); }
 
 /* ============================================================
+   IMPACT STRIP (라이트 — 교육 이후 변화 통계 띠)
+============================================================ */
+.impact-strip {
+  background: #fafaf8;
+  padding: clamp(72px, 9vw, 120px) 0;
+  position: relative;
+}
+.impact-strip .impact-grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .impact-strip .impact-grid { grid-template-columns: 1fr 1.4fr; gap: 64px; }
+}
+.impact-strip .impact-head .meta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-700);
+  margin-bottom: 14px;
+}
+.impact-strip .impact-head h2 {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "ss03", "case";
+  font-weight: 800;
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 16px;
+  word-break: keep-all;
+}
+.impact-strip .impact-head p {
+  font-size: 15px;
+  color: var(--gray-700);
+  line-height: 1.65;
+  margin: 0;
+}
+.impact-cards {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .impact-cards { grid-template-columns: repeat(3, 1fr); } }
+.impact-card {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.impact-card::after {
+  content: '';
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(167,139,250,0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+.impact-card .num {
+  font-family: var(--font-num);
+  font-size: clamp(36px, 4.4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--white);
+  font-feature-settings: "tnum";
+}
+.impact-card .num .unit { color: var(--red); margin-left: 2px; font-size: 0.7em; }
+.impact-card .lab {
+  font-size: 13px;
+  color: var(--gray-300);
+  letter-spacing: -0.005em;
+}
+.impact-card .desc {
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 12px;
+  color: var(--gray-400);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  line-height: 1.5;
+}
+
+/* ============================================================
    INDUSTRY SECTION (KANT 32 — 결과로 증명하는 취업 노하우)
 ============================================================ */
 .industry-section { padding: clamp(80px, 10vw, 120px) 0; }
@@ -1468,6 +1609,61 @@ footer .copy {
 }
 
 /* ============================================================
+   CUSTOM CURSOR — SVG 보라 sparkle + 따라가는 글로우 원
+============================================================ */
+@media (pointer: fine) {
+  /* 기본 커서 = 작은 보라 sparkle (24x24) */
+  body, html {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><g><circle cx='12' cy='12' r='3' fill='%238b5cf6' stroke='%23ffffff' stroke-width='1.2'/><circle cx='12' cy='12' r='6' fill='none' stroke='%238b5cf6' stroke-width='0.8' opacity='0.5'/></g></svg>") 12 12, auto;
+  }
+  /* 인터랙티브 요소 = 별/sparkle 커서 (포인터 변형) */
+  a, button, .btn, .nav-link, .nav-cta, .nav-login, .faq-q, .industry-card, .b-card, .pillar, .tool, .mq-card, label, summary, [role="button"], [tabindex] {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><g><path d='M14 2 L16 12 L26 14 L16 16 L14 26 L12 16 L2 14 L12 12 Z' fill='%238b5cf6' stroke='%23ffffff' stroke-width='0.8'/></g></svg>") 14 14, pointer;
+  }
+}
+
+/* JS 가상 커서: 화면 위 부드럽게 떠다니는 큰 글로우 원 */
+.ai-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(167, 139, 250, 0.55) 0%,
+    rgba(139, 92, 246, 0.32) 40%,
+    rgba(139, 92, 246, 0) 75%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+  transition:
+    width 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    height 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background 0.25s ease,
+    opacity 0.3s ease;
+  opacity: 0;
+  mix-blend-mode: plus-lighter;
+  will-change: transform;
+}
+.ai-cursor.visible { opacity: 1; }
+.ai-cursor.hover {
+  width: 64px; height: 64px;
+  background: radial-gradient(circle,
+    rgba(167, 139, 250, 0.7) 0%,
+    rgba(139, 92, 246, 0.4) 35%,
+    rgba(139, 92, 246, 0) 75%);
+}
+.ai-cursor.click {
+  width: 22px; height: 22px;
+  background: radial-gradient(circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(167, 139, 250, 0.6) 40%,
+    rgba(139, 92, 246, 0) 80%);
+}
+@media (pointer: coarse) { .ai-cursor { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ai-cursor { display: none; } }
+
+/* ============================================================
    INTERACTIVE — spotlight on benefit/pillar/tool/industry cards
 ============================================================ */
 .b-card, .pillar, .tool, .industry-card {
@@ -1825,6 +2021,37 @@ footer .copy {
   </div>
 </section>
 
+<!-- ========== IMPACT STRIP (라이트 — 교육 이후 변화) ========== -->
+<section class="impact-strip">
+  <div class="wrap">
+    <div class="impact-grid">
+      <div class="impact-head reveal">
+        <span class="meta">Impact</span>
+        <h2>왜 이 프로그램<br />하나로 충분한가요?</h2>
+        <p>경력단절을 넘어선 분들의 실제 변화 — 8주 안에 이 정도가 가능합니다.</p>
+      </div>
+
+      <div class="impact-cards">
+        <div class="impact-card reveal d1">
+          <div class="num">8<span class="unit">주</span></div>
+          <div class="lab">평균 직무 복귀 준비 완료</div>
+          <div class="desc">기존 부트캠프 평균 16주 대비 절반 단축</div>
+        </div>
+        <div class="impact-card reveal d2">
+          <div class="num">86<span class="unit">%</span></div>
+          <div class="lab">수료 후 직무 매칭률</div>
+          <div class="desc">이공계 전문 컨설턴트 매칭 후 6개월 기준</div>
+        </div>
+        <div class="impact-card reveal d3">
+          <div class="num">100<span class="unit">%</span></div>
+          <div class="lab">1:1 멘토링 보장</div>
+          <div class="desc">트랙별 멘토 + 1:1 컨설팅 3회+ 회당 1.5h</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== PROGRAM / CURRICULUM ========== -->
 <section id="program" class="section-curri">
   <div class="wrap">
@@ -2001,14 +2228,14 @@ footer .copy {
     <div class="env-meta reveal d1">
       <div class="env-pill">교대역 2호선·3호선 도보 5분</div>
       <div class="env-pill">50인 수용 · 트랙별 분반</div>
-      <div class="env-pill">노트북·AI 도구 라이선스 지원</div>
+      <div class="env-pill">AI 도구 라이선스 지원</div>
       <div class="env-pill">전용 라운지 · 점심 공간</div>
     </div>
   </div>
 </section>
 
-<!-- ========== PERSONA — 이런 사람에게 추천 ========== -->
-<section style="padding-top: 0;">
+<!-- ========== PERSONA — 이런 사람에게 추천 (라이트 섹션) ========== -->
+<section class="section-light">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="t-meta">추천 대상</span>
@@ -2090,7 +2317,7 @@ footer .copy {
 </section>
 
 <!-- ========== FAQ ========== -->
-<section id="faq" style="padding-top: 0;">
+<section id="faq" class="section-light">
   <div class="wrap-narrow">
     <div class="section-head reveal" style="margin-top: 96px;">
       <span class="t-meta">자주 묻는 질문</span>
@@ -2180,6 +2407,9 @@ footer .copy {
   </div>
 </footer>
 
+<!-- ========== AI CURSOR (마우스 따라 부드럽게 떠다니는 보라 글로우) ========== -->
+<div class="ai-cursor" id="aiCursor" aria-hidden="true"></div>
+
 <!-- ========== FLOATING BOTTOM CTA ========== -->
 <div class="floating-cta" id="floatingCta">
   <div class="info">
@@ -2259,6 +2489,39 @@ footer .copy {
       entries.forEach(entry => cta.classList.toggle('hidden', entry.isIntersecting));
     }, { threshold: 0.3 });
     io.observe(target);
+  })();
+
+  /* AI CURSOR — 마우스 따라 부드럽게 떠다니는 보라 글로우 원 */
+  (function () {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cursor = document.getElementById('aiCursor');
+    if (!cursor) return;
+    let mx = 0, my = 0, cx = 0, cy = 0;
+    let raf = null;
+    const HOVER_SEL = 'a, button, .btn, .nav-link, .nav-cta, .nav-login, .faq-q, .industry-card, .b-card, .pillar, .tool, .mq-card, [role="button"]';
+    function loop() {
+      // ease toward target
+      cx += (mx - cx) * 0.22;
+      cy += (my - cy) * 0.22;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(loop);
+    }
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (!cursor.classList.contains('visible')) cursor.classList.add('visible');
+      if (!raf) loop();
+    });
+    document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
+    document.addEventListener('mouseenter', () => cursor.classList.add('visible'));
+    /* hover 감지: 마우스가 인터랙티브 요소 위에 있을 때 커서 확대 */
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(HOVER_SEL)) cursor.classList.add('hover');
+      else cursor.classList.remove('hover');
+    });
+    /* click 시 잠깐 작아지면서 white flash */
+    document.addEventListener('mousedown', () => cursor.classList.add('click'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('click'));
   })();
 
   /* SPOTLIGHT — 마우스 따라 카드 안에 부드러운 보라 빛 */
