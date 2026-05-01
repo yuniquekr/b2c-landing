@@ -1612,13 +1612,13 @@ footer .copy {
    CUSTOM CURSOR — SVG 보라 sparkle + 따라가는 글로우 원
 ============================================================ */
 @media (pointer: fine) {
-  /* 기본 커서 = 작은 보라 sparkle (24x24) */
+  /* 기본 커서 = 4-pointed sparkle 별 (사용자가 좋아한 십자 모양) */
   body, html {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><g><circle cx='12' cy='12' r='3' fill='%238b5cf6' stroke='%23ffffff' stroke-width='1.2'/><circle cx='12' cy='12' r='6' fill='none' stroke='%238b5cf6' stroke-width='0.8' opacity='0.5'/></g></svg>") 12 12, auto;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><g><path d='M14 2 L16 12 L26 14 L16 16 L14 26 L12 16 L2 14 L12 12 Z' fill='%238b5cf6' stroke='%23ffffff' stroke-width='0.8'/></g></svg>") 14 14, auto;
   }
-  /* 인터랙티브 요소 = 별/sparkle 커서 (포인터 변형) */
+  /* 인터랙티브 요소 = 더 큰 sparkle + 흰 외곽 (호버 강조) */
   a, button, .btn, .nav-link, .nav-cta, .nav-login, .faq-q, .industry-card, .b-card, .pillar, .tool, .mq-card, label, summary, [role="button"], [tabindex] {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><g><path d='M14 2 L16 12 L26 14 L16 16 L14 26 L12 16 L2 14 L12 12 Z' fill='%238b5cf6' stroke='%23ffffff' stroke-width='0.8'/></g></svg>") 14 14, pointer;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g><path d='M16 2 L18.5 13.5 L30 16 L18.5 18.5 L16 30 L13.5 18.5 L2 16 L13.5 13.5 Z' fill='%23ffffff' stroke='%238b5cf6' stroke-width='1.5'/></g></svg>") 16 16, pointer;
   }
 }
 
