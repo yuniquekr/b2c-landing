@@ -238,14 +238,14 @@ section { padding: 64px 0; }
 .nav-login:hover { opacity: 1; }
 
 /* ============================================================
-   GOV LOCKUP (Hero 직상 — KANT처럼 작고 미니멀)
+   GOV LOCKUP (Hero 좌측 — 좌측 정렬)
 ============================================================ */
 .gov-lockup {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
   opacity: 0.9;
 }
@@ -274,16 +274,29 @@ section { padding: 64px 0; }
 }
 
 /* ============================================================
-   HERO — w/ veo3 video background
+   HERO — split layout (좌 텍스트 / 우 marquee)
 ============================================================ */
 .hero {
   padding: clamp(56px, 8vw, 96px) 0 clamp(40px, 6vw, 72px);
-  text-align: center;
   border-bottom: 1px solid var(--hairline-dark);
   position: relative;
   overflow: hidden;
   isolation: isolate;
 }
+.hero-grid {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; }
+}
+.hero-left { text-align: left; }
+.hero-right {
+  position: relative;
+  min-height: 280px;
+}
+@media (min-width: 1024px) { .hero-right { min-height: 460px; } }
 .hero-video {
   position: absolute;
   inset: 0;
@@ -306,15 +319,16 @@ section { padding: 64px 0; }
 }
 /* Hero 위에서는 body 도트 패턴 안 보이게 */
 .hero { background: var(--bg); }
-.hero > .wrap, .hero > .hero-meta-wrap { position: relative; z-index: 5; }
+.hero > .wrap, .hero > .hero-meta-wrap, .hero > .marquee { position: relative; z-index: 5; }
 .hero h1 {
-  margin: 0 auto;
-  max-width: 880px;
+  margin: 0;
+  max-width: 100%;
   font-weight: 700;
-  font-size: clamp(32px, 5.4vw, 52px);
-  line-height: 1.2;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.18;
   letter-spacing: -0.03em;
   color: var(--white);
+  text-align: left;
 }
 .hero h1 .red { color: var(--red); }
 .hero .acronym {
@@ -322,6 +336,7 @@ section { padding: 64px 0; }
   font-size: 14px;
   letter-spacing: -0.005em;
   color: var(--gray-300);
+  text-align: left;
 }
 .hero .acronym .name {
   font-family: var(--font-num);
@@ -331,15 +346,16 @@ section { padding: 64px 0; }
   letter-spacing: 0.02em;
 }
 .hero .lead {
-  margin: 24px auto 0;
-  max-width: 580px;
+  margin: 24px 0 0;
+  max-width: 540px;
   font-size: 17px;
   line-height: 1.7;
   color: var(--gray-300);
+  text-align: left;
 }
 .hero .actions {
   margin-top: 32px;
-  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  display: flex; gap: 10px; justify-content: flex-start; flex-wrap: wrap;
 }
 
 /* Hero meta — 풀 width strip */
@@ -383,6 +399,82 @@ section { padding: 64px 0; }
   color: var(--gray-400);
 }
 @media (max-width: 767px) { .hero-meta .divider { display: none; } }
+
+/* ============================================================
+   INTERVIEW MARQUEE (KANT 패턴 — 우측 col 안에서 우→좌 흐름)
+============================================================ */
+.marquee {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+@media (min-width: 1024px) { .marquee { min-height: 460px; } }
+.marquee-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  /* 두 세트 X 6 = 12개 카드, 38s 한 사이클 */
+  animation: marquee-scroll 38s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.mq-card {
+  flex-shrink: 0;
+  width: clamp(190px, 22vw, 250px);
+  background: var(--bg-card);
+  border: 1px solid var(--hairline-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.mq-card:hover {
+  border-color: rgba(167, 139, 250, 0.5);
+  transform: translateY(-4px);
+}
+.mq-photo {
+  aspect-ratio: 4 / 5;
+  background-color: var(--bg-card-2);
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.96) contrast(1.04);
+}
+.mq-text {
+  padding: 14px 16px 16px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mq-from {
+  font-size: 12px;
+  color: var(--gray-400);
+  letter-spacing: -0.005em;
+  font-weight: 500;
+}
+.mq-to {
+  font-size: 14px;
+  color: var(--white);
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.mq-to .arrow {
+  display: inline-block;
+  margin-right: 4px;
+  color: var(--red);
+  font-weight: 700;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; transform: none; }
+}
 
 /* ============================================================
    COMBO BLOCK (pillars + benefits 한 묶음, hero 직후 연속 배치)
@@ -1449,29 +1541,126 @@ footer .copy {
   </video>
   <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="gov-lockup">
-      <span class="logo">상상력집단</span>
-      <span class="x">×</span>
-      <span class="logo">한국여성과학기술인육성재단</span>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="gov-lockup">
+          <span class="logo">상상력집단</span>
+          <span class="x">×</span>
+          <span class="logo">한국여성과학기술인육성재단</span>
+        </div>
+
+        <h1>
+          이공계 × AI,<br />
+          <span class="red">다시 직무로 복귀</span>합니다.
+        </h1>
+
+        <div class="acronym"><span class="name">WISET</span>AI Career Restart Program for Women in STEM</div>
+
+        <p class="lead">
+          이공계 경력 보유 여성을 위한 8주 120시간 AI 직무 복귀 프로그램.<br />
+          출산·육아로 멈춘 커리어를 전공 그대로 다시 시작합니다.
+        </p>
+
+        <div class="actions">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScZX4707TfqZs6NLIFZ3YmeK-WL6t6zqdHH1MiI2YoPjZFz1w/viewform" target="_blank" rel="noopener" class="btn btn-red btn-lg">지금 신청하기 →</a>
+          <a href="#curriculum" class="btn btn-ghost-dark btn-lg">커리큘럼 보기</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <!-- Interview Marquee — 우→좌 흐름, 12개 카드 (6장 × 2세트 무한 루프) -->
+        <div class="marquee" aria-label="수강생 변신 스토리">
+          <div class="marquee-track">
+            <!-- SET 1 -->
+            <div class="mq-card">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-1.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">화학공학 연구원 7년 단절</div>
+                <div class="mq-to"><span class="arrow">→</span>신약 AI 분석가로</div>
+              </div>
+            </div>
+            <div class="mq-card">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-2.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">식품공학 석사 출신</div>
+                <div class="mq-to"><span class="arrow">→</span>식품 안전성 ML 엔지니어로</div>
+              </div>
+            </div>
+            <div class="mq-card">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-3.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">반도체 공정 연구원 5년</div>
+                <div class="mq-to"><span class="arrow">→</span>스마트팩토리 데이터 PM으로</div>
+              </div>
+            </div>
+            <div class="mq-card">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-4.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">제약 QA 출신, 출산휴직</div>
+                <div class="mq-to"><span class="arrow">→</span>헬스케어 AI 기획자로</div>
+              </div>
+            </div>
+            <div class="mq-card">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-5.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">환경공학 석사, 10년 단절</div>
+                <div class="mq-to"><span class="arrow">→</span>에너지 데이터 사이언티스트로</div>
+              </div>
+            </div>
+            <div class="mq-card">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-6.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">전자공학 학사, 육아맘</div>
+                <div class="mq-to"><span class="arrow">→</span>IoT 머신러닝 엔지니어로</div>
+              </div>
+            </div>
+            <!-- SET 2 (무한 루프 매끄러움 위해 동일 6장 반복) -->
+            <div class="mq-card" aria-hidden="true">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-1.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">화학공학 연구원 7년 단절</div>
+                <div class="mq-to"><span class="arrow">→</span>신약 AI 분석가로</div>
+              </div>
+            </div>
+            <div class="mq-card" aria-hidden="true">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-2.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">식품공학 석사 출신</div>
+                <div class="mq-to"><span class="arrow">→</span>식품 안전성 ML 엔지니어로</div>
+              </div>
+            </div>
+            <div class="mq-card" aria-hidden="true">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-3.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">반도체 공정 연구원 5년</div>
+                <div class="mq-to"><span class="arrow">→</span>스마트팩토리 데이터 PM으로</div>
+              </div>
+            </div>
+            <div class="mq-card" aria-hidden="true">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-4.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">제약 QA 출신, 출산휴직</div>
+                <div class="mq-to"><span class="arrow">→</span>헬스케어 AI 기획자로</div>
+              </div>
+            </div>
+            <div class="mq-card" aria-hidden="true">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-5.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">환경공학 석사, 10년 단절</div>
+                <div class="mq-to"><span class="arrow">→</span>에너지 데이터 사이언티스트로</div>
+              </div>
+            </div>
+            <div class="mq-card" aria-hidden="true">
+              <div class="mq-photo" style="background-image: url('assets/interviews/person-6.png');"></div>
+              <div class="mq-text">
+                <div class="mq-from">전자공학 학사, 육아맘</div>
+                <div class="mq-to"><span class="arrow">→</span>IoT 머신러닝 엔지니어로</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <h1>
-      이공계 × AI,<br />
-      <span class="red">다시 직무로 복귀</span>합니다.
-    </h1>
-
-    <div class="acronym"><span class="name">WISET</span>AI Career Restart Program for Women in STEM</div>
-
-    <p class="lead">
-      이공계 경력 보유 여성을 위한 8주 120시간 AI 직무 복귀 프로그램.<br />
-      출산·육아로 멈춘 커리어를 전공 그대로 다시 시작합니다.
-    </p>
-
-    <div class="actions">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScZX4707TfqZs6NLIFZ3YmeK-WL6t6zqdHH1MiI2YoPjZFz1w/viewform" target="_blank" rel="noopener" class="btn btn-red btn-lg">지금 신청하기 →</a>
-      <a href="#curriculum" class="btn btn-ghost-dark btn-lg">커리큘럼 보기</a>
-    </div>
-
   </div>
 
   <div class="hero-meta-wrap">
