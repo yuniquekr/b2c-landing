@@ -1263,6 +1263,208 @@ section { padding: 64px 0; }
 }
 
 /* ============================================================
+   AUDIENCE — 이런 분에게 추천 (BENEFIT 위, 라이트 톤)
+============================================================ */
+.audience-section {
+  background: #eef0f6;
+  padding: clamp(80px, 9vw, 120px) 0;
+  position: relative;
+}
+.audience-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+}
+.audience-head .meta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red-deep);
+  letter-spacing: -0.005em;
+  margin-bottom: 14px;
+}
+.audience-head h2 {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "ss03", "case";
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0;
+  word-break: keep-all;
+}
+.audience-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .audience-grid { grid-template-columns: repeat(3, 1fr); } }
+.audience-card {
+  position: relative;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px 28px 120px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.audience-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 14px 32px rgba(15, 23, 42, 0.10);
+}
+.audience-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.audience-card .tag {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--red-soft);
+  color: var(--red-deep);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+.audience-card .tag-strong {
+  background: var(--red-deep);
+  color: var(--white);
+}
+.audience-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  margin: 0 0 14px;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.audience-card .quote {
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.7;
+  margin: 0;
+  word-break: keep-all;
+  position: relative;
+  z-index: 1;
+}
+.audience-card .ill {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  width: 96px;
+  height: 96px;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+.audience-card .ill svg { width: 100%; height: 100%; display: block; }
+@media (max-width: 767px) {
+  .audience-card { padding-bottom: 132px; }
+  .audience-card .ill { width: 88px; height: 88px; }
+}
+
+/* ============================================================
+   STRENGTH — 내 경험이 AI 직무의 강점이 되는 이유 (다크 톤)
+============================================================ */
+.strength-section {
+  background: #0d111a;
+  padding: clamp(80px, 10vw, 120px) 0;
+  position: relative;
+}
+.strength-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(48px, 6vw, 72px);
+}
+.strength-head .meta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red-hover);
+  margin-bottom: 16px;
+  letter-spacing: -0.005em;
+}
+.strength-head h2 {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "ss03", "case";
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin: 0;
+  word-break: keep-all;
+}
+.strength-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .strength-grid { grid-template-columns: 1fr 1fr; } }
+.strength-card {
+  position: relative;
+  background: #161a26;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 36px 36px 36px;
+  min-height: 240px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.strength-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+.strength-card .label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red-hover);
+  margin-bottom: 14px;
+  letter-spacing: -0.005em;
+  display: block;
+}
+.strength-card h3 {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.022em;
+  line-height: 1.4;
+  margin: 0 0 16px;
+  word-break: keep-all;
+  max-width: 70%;
+}
+.strength-card p {
+  font-size: 14px;
+  color: var(--gray-300);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 60%;
+  word-break: keep-all;
+}
+.strength-card .ill {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  width: 130px;
+  height: 130px;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+.strength-card .ill svg { width: 100%; height: 100%; display: block; }
+@media (max-width: 767px) {
+  .strength-card { padding: 28px; min-height: 260px; padding-bottom: 140px; }
+  .strength-card h3, .strength-card p { max-width: 100%; }
+  .strength-card .ill { width: 96px; height: 96px; right: 18px; bottom: 18px; }
+}
+
+/* ============================================================
    ELIGIBILITY (자격 조건)
 ============================================================ */
 .elig-grid {
@@ -1916,6 +2118,224 @@ footer .copy {
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ========== AUDIENCE — 이런 분에게 추천 ========== -->
+<section class="audience-section">
+  <div class="wrap">
+    <div class="audience-head reveal">
+      <span class="meta">AI 직무 복귀 프로그램</span>
+      <h2>이런 분에게 추천드려요</h2>
+    </div>
+
+    <div class="audience-grid">
+      <article class="audience-card reveal d1">
+        <div class="tags">
+          <span class="tag">경력단절</span>
+          <span class="tag">이공계</span>
+          <span class="tag">재취업</span>
+        </div>
+        <h3>전공이 아까운<br />경력단절 여성</h3>
+        <p class="quote">"이공계 학위는 있는데, 출산·육아로 멈춘 사이 AI가 너무 빨리 변해서 다시 시작할 수 있을지 막막해요"</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="briefGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="50" cy="86" rx="32" ry="4" fill="rgba(124,58,237,0.18)"/>
+            <path d="M22 38 L78 38 L78 78 L22 78 Z" fill="url(#briefGrad)"/>
+            <path d="M22 38 L50 30 L78 38 L50 46 Z" fill="#8b5cf6"/>
+            <path d="M22 38 L22 78 L18 76 L18 36 Z" fill="#6d28d9"/>
+            <path d="M40 28 Q40 22 50 22 Q60 22 60 28 L60 34 L56 34 L56 28 Q56 26 50 26 Q44 26 44 28 L44 34 L40 34 Z" fill="#5b21b6"/>
+            <rect x="46" y="54" width="8" height="6" rx="1" fill="#3b0a8c"/>
+            <rect x="48" y="56" width="4" height="2" rx="0.5" fill="#a78bfa"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="audience-card reveal d2">
+        <div class="tags">
+          <span class="tag">비전공자</span>
+          <span class="tag">AI 신규 진입</span>
+        </div>
+        <h3>AI 시대 적응이<br />필요한 분</h3>
+        <p class="quote">"지금 직무로는 AI 시대에 살아남기 어려울 것 같은데, 8주 안에 새 커리어를 만들 수 있을까요?"</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="headGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="50" cy="86" rx="30" ry="4" fill="rgba(124,58,237,0.18)"/>
+            <path d="M30 50 Q30 26 52 26 Q72 26 72 48 L72 70 Q72 76 66 76 L60 76 L60 84 L40 84 L40 76 Q30 74 30 64 Z" fill="url(#headGrad)"/>
+            <circle cx="58" cy="50" r="3" fill="#fff"/>
+            <circle cx="58" cy="50" r="1.4" fill="#3b0a8c"/>
+            <path d="M40 58 Q44 62 50 60" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="38" cy="44" r="2" fill="#fbbf24"/>
+            <circle cx="48" cy="36" r="2" fill="#fbbf24"/>
+            <line x1="38" y1="44" x2="48" y2="36" stroke="#fbbf24" stroke-width="1.2"/>
+            <line x1="48" y1="36" x2="58" y2="42" stroke="#fbbf24" stroke-width="1.2"/>
+            <circle cx="58" cy="42" r="2" fill="#fbbf24"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="audience-card reveal d3">
+        <div class="tags">
+          <span class="tag tag-strong">진로 전환</span>
+          <span class="tag">이공계 연구원</span>
+        </div>
+        <h3>전공에 AI를 더해<br />직무를 확장하려는 분</h3>
+        <p class="quote">"기존 연구·실무 지식에 AI를 결합해서, 더 높은 가치의 AI 직무로 옮기고 싶어요"</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="clipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="50" cy="86" rx="30" ry="4" fill="rgba(124,58,237,0.18)"/>
+            <rect x="26" y="22" width="48" height="60" rx="4" fill="url(#clipGrad)"/>
+            <rect x="38" y="18" width="24" height="10" rx="2" fill="#5b21b6"/>
+            <rect x="44" y="20" width="12" height="6" rx="1" fill="#a78bfa"/>
+            <rect x="32" y="38" width="34" height="3" rx="1" fill="#ddd6fe"/>
+            <rect x="32" y="46" width="26" height="3" rx="1" fill="#ddd6fe"/>
+            <rect x="32" y="58" width="6" height="14" fill="#fbbf24"/>
+            <rect x="40" y="54" width="6" height="18" fill="#34d399"/>
+            <rect x="48" y="50" width="6" height="22" fill="#fbbf24"/>
+            <rect x="56" y="46" width="6" height="26" fill="#34d399"/>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STRENGTH — 내 경험이 AI 직무의 강점이 되는 이유 ========== -->
+<section class="strength-section">
+  <div class="wrap">
+    <div class="strength-head reveal">
+      <span class="meta">이공계 출신이라면 더 강해요</span>
+      <h2>내 경험이<br />AI 직무의 강점이 되는 이유</h2>
+    </div>
+
+    <div class="strength-grid">
+      <article class="strength-card reveal d1">
+        <span class="label">이공계 학위가 있다면</span>
+        <h3>도메인 지식을<br />가진 AI 전문가</h3>
+        <p>화학·바이오·제조 데이터는 도메인 지식 없이 모델링 불가능해요. 전공이 곧 차별화 역량입니다.</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="atomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="70" cy="120" rx="44" ry="5" fill="rgba(167,139,250,0.12)"/>
+            <ellipse cx="70" cy="70" rx="50" ry="20" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.85" transform="rotate(0 70 70)"/>
+            <ellipse cx="70" cy="70" rx="50" ry="20" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.85" transform="rotate(60 70 70)"/>
+            <ellipse cx="70" cy="70" rx="50" ry="20" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.85" transform="rotate(-60 70 70)"/>
+            <circle cx="70" cy="70" r="10" fill="url(#atomGrad)"/>
+            <circle cx="118" cy="62" r="4" fill="#fbbf24"/>
+            <circle cx="32" cy="86" r="4" fill="#34d399"/>
+            <circle cx="86" cy="32" r="4" fill="#60a5fa"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="strength-card reveal d1">
+        <span class="label">연구·실험 경력이 있다면</span>
+        <h3>가설 검증에 강한<br />ML 엔지니어</h3>
+        <p>실험 설계·데이터 분석·결과 검증 — 이미 ML 워크플로우의 절반을 가지고 계세요.</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="abGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#6d28d9"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="70" cy="120" rx="44" ry="5" fill="rgba(167,139,250,0.12)"/>
+            <path d="M28 50 L70 30 L112 50 L70 70 Z" fill="#5b21b6"/>
+            <path d="M28 50 L28 100 L70 120 L70 70 Z" fill="url(#abGrad)"/>
+            <path d="M70 70 L70 120 L112 100 L112 50 Z" fill="#7c3aed"/>
+            <text x="44" y="92" fill="#fff" font-size="20" font-weight="800" font-family="Inter">A</text>
+            <text x="86" y="100" fill="#fff" font-size="20" font-weight="800" font-family="Inter">B</text>
+            <rect x="38" y="98" width="14" height="3" fill="#fbbf24"/>
+            <rect x="80" y="106" width="22" height="3" fill="#34d399"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="strength-card reveal d2">
+        <span class="label">경력단절 후 복귀라면</span>
+        <h3>새 도구를 빨리<br />받아들이는 학습력</h3>
+        <p>선입견 없이 최신 AI 도구를 흡수하는 속도가 신입 개발자보다 빠른 경우가 많습니다.</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="rocketGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c4b5fd"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="70" cy="124" rx="42" ry="5" fill="rgba(167,139,250,0.12)"/>
+            <path d="M70 22 Q86 36 86 70 L86 96 L54 96 L54 70 Q54 36 70 22 Z" fill="url(#rocketGrad)"/>
+            <circle cx="70" cy="56" r="7" fill="#0d111a" stroke="#fff" stroke-width="2"/>
+            <path d="M54 80 L40 96 L54 96 Z" fill="#5b21b6"/>
+            <path d="M86 80 L100 96 L86 96 Z" fill="#5b21b6"/>
+            <path d="M62 96 L60 112 L70 106 L80 112 L78 96 Z" fill="#fbbf24"/>
+            <path d="M64 100 L62 116 L70 110 L78 116 L76 100 Z" fill="#f97316" opacity="0.85"/>
+            <circle cx="32" cy="40" r="2" fill="#fff" opacity="0.7"/>
+            <circle cx="112" cy="46" r="1.5" fill="#fff" opacity="0.7"/>
+            <circle cx="22" cy="78" r="1.5" fill="#fff" opacity="0.6"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="strength-card reveal d2">
+        <span class="label">현장·실무 경력이 있다면</span>
+        <h3>도메인 문제를<br />AI로 푸는 사람</h3>
+        <p>현장의 진짜 문제를 아는 사람이 IT로 풀어낼 때, 가장 강력한 솔루션이 만들어집니다.</p>
+        <div class="ill" aria-hidden="true">
+          <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#5b21b6"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="70" cy="124" rx="46" ry="5" fill="rgba(167,139,250,0.12)"/>
+            <path d="M30 60 L60 50 L60 116 L30 124 Z" fill="url(#bldGrad)"/>
+            <path d="M60 116 L60 50 L80 56 L80 122 Z" fill="#6d28d9"/>
+            <path d="M80 40 L110 30 L110 110 L80 122 Z" fill="url(#bldGrad)"/>
+            <path d="M80 122 L80 40 L100 46 L100 116 Z" fill="#7c3aed" opacity="0.85"/>
+            <g fill="#0d111a" opacity="0.7">
+              <rect x="36" y="68" width="6" height="6"/>
+              <rect x="46" y="64" width="6" height="6"/>
+              <rect x="36" y="84" width="6" height="6"/>
+              <rect x="46" y="80" width="6" height="6"/>
+              <rect x="36" y="100" width="6" height="6"/>
+              <rect x="46" y="96" width="6" height="6"/>
+              <rect x="86" y="58" width="6" height="6"/>
+              <rect x="96" y="54" width="6" height="6"/>
+              <rect x="86" y="74" width="6" height="6"/>
+              <rect x="96" y="70" width="6" height="6"/>
+              <rect x="86" y="90" width="6" height="6"/>
+              <rect x="96" y="86" width="6" height="6"/>
+            </g>
+          </svg>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
