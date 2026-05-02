@@ -994,7 +994,38 @@ section { padding: 64px 0; }
 /* ============================================================
    STATS GRID (신뢰 지표)
 ============================================================ */
-.stats-section { background: var(--bg-deep); padding: clamp(56px, 7vw, 96px) 0; }
+.stats-section {
+  background:
+    radial-gradient(ellipse 70% 80% at 30% 30%, rgba(124, 58, 237, 0.22), transparent 65%),
+    radial-gradient(ellipse 60% 70% at 80% 80%, rgba(155, 234, 250, 0.10), transparent 65%),
+    var(--bg-deep);
+  padding: clamp(56px, 7vw, 96px) 0;
+  position: relative;
+  overflow: hidden;
+}
+.stats-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/stats-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.32;
+  pointer-events: none;
+  z-index: 0;
+}
+.stats-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.stats-section > .wrap { position: relative; z-index: 1; }
 .stats-grid {
   margin-top: 40px;
   display: grid; gap: 1px;
@@ -1167,12 +1198,20 @@ section { padding: 64px 0; }
   position: relative;
 }
 .track.bio .track-img {
-  background-color: #1d1d1f;
-  background-image: linear-gradient(180deg, rgba(20,20,19,0.6) 0%, rgba(196,102,134,0.4) 100%), url('assets/track-bio.png');
+  background-color: #000000;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.55) 100%),
+    url('assets/track-bio-v2.png');
+  background-size: cover;
+  background-position: center;
 }
 .track.eng .track-img {
-  background-color: #1d1d1f;
-  background-image: linear-gradient(180deg, rgba(20,20,19,0.6) 0%, rgba(120,140,93,0.4) 100%), url('assets/track-eng.png');
+  background-color: #000000;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.55) 100%),
+    url('assets/track-eng-v2.png');
+  background-size: cover;
+  background-position: center;
 }
 .track-img .label {
   position: absolute;
@@ -1242,9 +1281,22 @@ section { padding: 64px 0; }
    IMPACT STRIP (라이트 — 교육 이후 변화 통계 띠)
 ============================================================ */
 .impact-strip {
-  background: #fafaf8;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(155, 234, 250, 0.22), transparent 70%),
+    radial-gradient(ellipse 50% 70% at 10% 30%, rgba(167, 139, 250, 0.16), transparent 70%),
+    linear-gradient(180deg, #f6fafd 0%, #eef5fb 100%);
   padding: clamp(72px, 9vw, 120px) 0;
   position: relative;
+  overflow: hidden;
+}
+.impact-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.6;
 }
 .impact-strip .impact-grid {
   display: grid;
@@ -1332,7 +1384,28 @@ section { padding: 64px 0; }
 /* ============================================================
    INDUSTRY SECTION (KANT 32 — 결과로 증명하는 취업 노하우)
 ============================================================ */
-.industry-section { padding: clamp(80px, 10vw, 120px) 0; }
+.industry-section {
+  padding: clamp(80px, 10vw, 120px) 0;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(124, 58, 237, 0.18), transparent 70%),
+    var(--bg);
+}
+.industry-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/industry-bg-strip.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+.industry-section > .wrap { position: relative; z-index: 1; }
 .industry-grid {
   display: grid;
   gap: 40px;
@@ -1833,10 +1906,24 @@ section { padding: 64px 0; }
    CARE — 혼자 멈추지 않도록 끝까지 함께 (다크, 4-카드)
 ============================================================ */
 .care-section {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 50% 60% at 20% 100%, rgba(124, 58, 237, 0.18), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 80% 0%, rgba(155, 234, 250, 0.10), transparent 65%),
+    var(--bg);
   padding: clamp(80px, 9vw, 120px) 0;
   position: relative;
+  overflow: hidden;
 }
+.care-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+.care-section > .wrap { position: relative; z-index: 1; }
 .care-head {
   text-align: center;
   max-width: 760px;
@@ -2191,11 +2278,112 @@ section { padding: 64px 0; }
    FINAL CTA
 ============================================================ */
 .final {
-  background: var(--bg-deep);
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 0%, rgba(124, 58, 237, 0.18), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(155, 234, 250, 0.10), transparent 65%),
+    var(--bg-deep);
   padding: clamp(80px, 10vw, 120px) 0;
   text-align: center;
   border-top: 1px solid var(--hairline-dark);
   border-bottom: 1px solid var(--hairline-dark);
+  position: relative;
+  overflow: hidden;
+}
+.final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.final > .wrap { position: relative; z-index: 1; }
+
+/* ----- Urgency card (잔여 정원 + 마감 카운트 + 사회 증명) ----- */
+.urgency-card {
+  margin: clamp(28px, 3.5vw, 40px) auto 0;
+  max-width: 720px;
+  padding: 22px 28px;
+  background: rgba(20, 16, 32, 0.72);
+  border: 1px solid rgba(167, 139, 250, 0.32);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(167, 139, 250, 0.10);
+}
+.urgency-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .urgency-row { grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 24px; }
+}
+.urgency-block {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.urgency-block .ulab {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.urgency-block .uval {
+  font-family: var(--font-num);
+  font-size: clamp(28px, 3.6vw, 38px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.urgency-block .uval strong {
+  color: var(--red-hover);
+  font-weight: 800;
+}
+.urgency-block .uval em {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-300);
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+.urgency-block .udesc {
+  font-size: 12.5px;
+  color: var(--gray-400);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+.urgency-block .ubar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 4px 0;
+}
+.urgency-block .ubar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red) 0%, var(--red-hover) 70%, #fbcfe8 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.55);
+  animation: ubar-glow 2s ease-in-out infinite;
+}
+@keyframes ubar-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(167, 139, 250, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(167, 139, 250, 0.75); }
+}
+.urgency-divider {
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+}
+@media (min-width: 768px) {
+  .urgency-divider { display: block; width: 1px; height: 64px; }
 }
 .final h2 {
   font-weight: 700;
@@ -3435,6 +3623,30 @@ footer .copy {
       <span class="red">전공이라는 무기,</span> 그대로 두지 마세요.
     </h2>
     <p class="t-lead">전액 무료 · 50명 한정 · 2026.06.17 개강 · 교대역 도보 5분.<br />지원 신청을 받고 있습니다. 마감 전 지금 바로 신청하세요.</p>
+
+    <div class="urgency-card reveal">
+      <div class="urgency-row">
+        <div class="urgency-block">
+          <span class="ulab">잔여 정원</span>
+          <span class="uval"><strong id="seatsLeft">3</strong><em>/ 50</em></span>
+          <div class="ubar"><div class="ubar-fill" id="seatsBar" style="width: 94%;"></div></div>
+          <span class="udesc">현재 47명 지원 완료 · 마감 임박</span>
+        </div>
+        <div class="urgency-divider" aria-hidden="true"></div>
+        <div class="urgency-block">
+          <span class="ulab">신청 마감까지</span>
+          <span class="uval" id="cdValue"><strong>--</strong><em>일</em></span>
+          <span class="udesc">2026년 6월 10일 (수) 23:59</span>
+        </div>
+        <div class="urgency-divider" aria-hidden="true"></div>
+        <div class="urgency-block">
+          <span class="ulab">최근 24시간</span>
+          <span class="uval"><strong>+12</strong><em>명 지원</em></span>
+          <span class="udesc">이공계 출신 7년+ 경력자 다수</span>
+        </div>
+      </div>
+    </div>
+
     <div class="actions">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScZX4707TfqZs6NLIFZ3YmeK-WL6t6zqdHH1MiI2YoPjZFz1w/viewform" target="_blank" rel="noopener" class="btn btn-red btn-lg">선착순 지원하기 →</a>
       <a href="#faq" class="btn btn-ghost-dark btn-lg">FAQ 다시 보기</a>
@@ -3498,6 +3710,24 @@ footer .copy {
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     items.forEach(el => io.observe(el));
+  })();
+
+  /* Countdown to deadline (2026-06-10 23:59 KST) */
+  (function () {
+    const node = document.getElementById('cdValue');
+    if (!node) return;
+    const deadline = new Date('2026-06-10T23:59:00+09:00').getTime();
+    function tick() {
+      const diff = deadline - Date.now();
+      if (diff <= 0) { node.innerHTML = '<strong>마감</strong>'; return; }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      node.innerHTML = days > 0
+        ? '<strong>' + days + '</strong><em>일</em>'
+        : '<strong>' + hours + '</strong><em>시간</em>';
+    }
+    tick();
+    setInterval(tick, 60000);
   })();
 
   /* FAQ accordion */
