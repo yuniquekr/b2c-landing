@@ -1003,19 +1003,6 @@ section { padding: 64px 0; }
   position: relative;
   overflow: hidden;
 }
-.stats-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('assets/stats-bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  mix-blend-mode: screen;
-  opacity: 0.32;
-  pointer-events: none;
-  z-index: 0;
-}
 .stats-section::before {
   content: '';
   position: absolute;
@@ -1384,28 +1371,7 @@ section { padding: 64px 0; }
 /* ============================================================
    INDUSTRY SECTION (KANT 32 — 결과로 증명하는 취업 노하우)
 ============================================================ */
-.industry-section {
-  padding: clamp(80px, 10vw, 120px) 0;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(124, 58, 237, 0.18), transparent 70%),
-    var(--bg);
-}
-.industry-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('assets/industry-bg-strip.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  mix-blend-mode: screen;
-  opacity: 0.18;
-  pointer-events: none;
-  z-index: 0;
-}
-.industry-section > .wrap { position: relative; z-index: 1; }
+.industry-section { padding: clamp(80px, 10vw, 120px) 0; }
 .industry-grid {
   display: grid;
   gap: 40px;
