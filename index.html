@@ -2365,6 +2365,86 @@ footer .copy {
 }
 
 /* ============================================================
+   KAKAO FLOATING CONTACT BUTTON — 우측 하단 원형 FAB
+============================================================ */
+.kakao-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 34px;
+  z-index: 70;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: kakaoBounce 2.4s ease-in-out infinite;
+  overflow: visible;
+}
+.kakao-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.45);
+}
+.kakao-fab img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  display: block;
+}
+.kakao-fab .kakao-tooltip {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1a1a1f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 10px;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  text-align: right;
+}
+.kakao-fab .kakao-tooltip br { line-height: 1.5; }
+.kakao-fab .kakao-tooltip strong {
+  color: #FEE500;
+  font-weight: 800;
+}
+.kakao-fab .kakao-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 6px solid #1a1a1f;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+@keyframes kakaoBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@media (max-width: 720px) {
+  .kakao-fab {
+    right: 16px;
+    bottom: 22px;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+  .kakao-fab img { border-radius: 14px; }
+  .kakao-fab .kakao-tooltip { display: none; }
+}
+
+/* ============================================================
    CUSTOM CURSOR — SVG 보라 sparkle + 따라가는 글로우 원
 ============================================================ */
 @media (pointer: fine) {
@@ -3488,6 +3568,12 @@ footer .copy {
   </div>
   <a href="https://docs.google.com/forms/d/e/1FAIpQLScZX4707TfqZs6NLIFZ3YmeK-WL6t6zqdHH1MiI2YoPjZFz1w/viewform" target="_blank" rel="noopener" class="btn btn-red">선착순 지원하기 →</a>
 </div>
+
+<!-- ========== KAKAO FLOATING CONTACT BUTTON ========== -->
+<a href="https://open.kakao.com/o/sWbBogti" target="_blank" rel="noopener" class="kakao-fab" aria-label="카카오톡 1대1 상담 요청">
+  <span class="kakao-tooltip">궁금한 것이 있다면 <strong>1대1 상담 요청</strong><br>10분 내로 답변</span>
+  <img src="assets/kakao-logo.png" alt="카카오톡">
+</a>
 
 <script>
   /* Reveal */
