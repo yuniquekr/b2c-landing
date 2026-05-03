@@ -2435,13 +2435,14 @@ footer .copy {
 @media (max-width: 720px) {
   .kakao-fab {
     right: 16px;
-    bottom: 22px;
+    bottom: 96px;
     width: 48px;
     height: 48px;
     border-radius: 14px;
   }
   .kakao-fab img { border-radius: 14px; }
   .kakao-fab .kakao-tooltip { display: none; }
+  .kakao-fab.cta-hidden { bottom: 22px; }
 }
 
 /* ============================================================
@@ -3637,10 +3638,14 @@ footer .copy {
   /* Hide floating CTA when final CTA visible */
   (function () {
     const cta = document.getElementById('floatingCta');
+    const kakao = document.querySelector('.kakao-fab');
     const target = document.getElementById('apply');
     if (!cta || !target) return;
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => cta.classList.toggle('hidden', entry.isIntersecting));
+      entries.forEach(entry => {
+        cta.classList.toggle('hidden', entry.isIntersecting);
+        if (kakao) kakao.classList.toggle('cta-hidden', entry.isIntersecting);
+      });
     }, { threshold: 0.3 });
     io.observe(target);
   })();
